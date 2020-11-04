@@ -41,9 +41,33 @@ do
 		echo "Tail Win! By $d"
 		break
 
-	elif (( $H==21 && $T==21 ))
+	elif (( $H>21 && $T>21 ))
 	then
 		echo "It's a Tie!"
+		flag=1
+		while [ $flag -eq 1 ]
+		do
+			flipCoin
+
+			d=`expr $H - $T`
+			if (( $d<0 ))
+			then
+				d=`expr $d \* -1`
+			fi
+
+			if (( $H>$T && $d==2 ))
+			then
+				echo "Head Win! By $d"
+				flag=0
+				break
+
+			elif (( $T>$H && $d==2 ))
+			then
+				echo "Tail Win! By $d"
+				flag=0
+				break
+			fi
+		done
 		break
 	fi
 done
