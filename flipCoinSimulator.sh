@@ -15,3 +15,9 @@ flipCoin()
         fi
 }
 
+for (( i=0; i<10; i++ ))
+do
+	flipCoin
+done
+echo "Head Win $H times"
+echo "Tail Win $T Times"
